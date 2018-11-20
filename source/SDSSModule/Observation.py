@@ -75,8 +75,6 @@ class Observation(object):
         plt.xlabel(r'Wavelength []$\AA$]')
         plt.ylabel('Flux [F$_{\lambda}$]')
         plt.title(self.name)
-        # plt.grid()
-        # plt.xticks([])
-        # plt.yticks([])
+
 
         plt.show()
