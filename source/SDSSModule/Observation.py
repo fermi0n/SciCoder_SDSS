@@ -58,8 +58,10 @@ class Observation(object):
         fiber_string = str(self.fiber)
         while len(str(fiber_string)) != 4:
             fiber_string = '0' + fiber_string
-        self.name = (f"{self.plate}-{self.mjd}-" + fiber_string)
-        print(f"{self.plate}-{self.mjd}-" + fiber_string)
+        self.name = (f"{self.plate}-{self.mjd}-" + fiber_string) # added self.name
+
+
+        # print(f"{self.plate}-{self.mjd}-" + fiber_string)
 
     # This method allows plotting of spectra
     def spectra_plot(self):
