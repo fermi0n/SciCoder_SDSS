@@ -29,6 +29,15 @@ class Observation:
         #Load fits file, called filename
         #load into the above variables
 
+        hdulist = fits.open(filename)
+        spectrum = hdulist[1].data
+        self.wavelength = np.asarray([10** i[1] for i in spectrum])
+        self.flux = np.asarray([i[0] for i in spectrum])
+        
+
+    def testing(self):
+        print self.wavelength
 
 
-
+observation = Observation("filename.txt")
+observation.testing()
