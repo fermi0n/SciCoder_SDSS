@@ -14,6 +14,7 @@ import numpy as np
 class Observation(object):
 
     def __init__(self, filename):
+        self._spectrum_name = None
         self.ra = None  # will be a float
         self.dec = None  # will be a float
         self.redshift = None  # will be a float
@@ -52,9 +53,11 @@ class Observation(object):
     # plate-mjd-xxxx
     # This allows easy integration with the sdss online browser service
     # as well as conversion into urls
+    @property
     def spectrum_name(self):
-        fiber_string = str(self.fiber)
-        while len(str(fiber_string)) != 4:
-            fiber_string = '0' + fiber_string
-
-        print(f"{self.plate}-{self.mjd}-" + fiber_string)
+        if self._spectrum_name is None:
+            fiber_string = str(self.fiber)
+            while len(str(fiber_string)) != 4:
+                fiber_string = '0' + fiber_string
+            self._spectrum_name = str(self.plate) + '-' + str(self.mjd) + '-' + fiber_string
+        return self._spectrum_name
