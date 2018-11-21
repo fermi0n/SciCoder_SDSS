@@ -1,6 +1,6 @@
 from astropy.io import fits
 import numpy as np
-
+import matplotlib.pyplot as plt
 
 # class Spectrum (Observation):
 
@@ -61,3 +61,18 @@ class Observation(object):
                 fiber_string = '0' + fiber_string
             self._spectrum_name = str(self.plate) + '-' + str(self.mjd) + '-' + fiber_string
         return self._spectrum_name
+
+    def spectra_plot(self):
+
+        plt.figure()
+        plt.plot(self.wavelength,self.flux, linewidth = 0.4)
+        plt.grid(linewidth = 0.4, linestyle='--', alpha = 0.6)
+        x1 = self.wavelength[0]
+        x2 = self.wavelength[len(self.wavelength)-1]
+        plt.xlim([x1,x2])
+        plt.xlabel(r'Wavelength []$\AA$]')
+        plt.ylabel('Flux [F$_{\lambda}$]')
+        plt.title(self.name)
+
+
+        plt.show()
