@@ -75,3 +75,15 @@ class Observation(object):
         plt.title(self.spectrum_name)
 
         plt.show()
+
+    @property
+    def peakWavelength(self):
+        index = np.argmax(self.flux)
+        return self.wavelength[index], self.flux[index]
+
+
+    def raInHMS(self):
+        totalseconds = self.ra * 12 * 60 * 60 / 360.0
+        min, sec = divmod(totalseconds, 60)
+        hours, min = divmod(min, 60)
+        return hours, min, sec
