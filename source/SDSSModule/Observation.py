@@ -25,6 +25,8 @@ class Observation(object):
         self.fiber = None
         self.flux = None  # numpy arrays of length X
         self.wavelength = None  # numpy arrays of length X (same as above)
+        self.best_fit = None  # numpy arrays of length X (same as above)
+
 
         # Load fits file, called filename
         # load into the above variables
@@ -44,6 +46,8 @@ class Observation(object):
             # Extract wavelength and flux, note the 10**
             self.wavelength = np.asarray([10 ** i[1] for i in spectrum])
             self.flux = np.asarray([i[0] for i in spectrum])
+            self.best_fit = np.asarray([i[7] for i in spectrum])
+
 
     def testing(self):
         print(self.wavelength)
@@ -78,8 +82,8 @@ class Observation(object):
 
     @property
     def peakWavelength(self):
-        index = np.argmax(self.flux)
-        return self.wavelength[index], self.flux[index]
+        index = np.argmax(self.best_fit)
+        return self.wavelength[index]
 
 
     def raInHMS(self):
