@@ -1,0 +1,10 @@
+[
+  "tests.py::test_spectrum_read",
+  "tests.py::test_flux",
+  "tests.py::test_ra",
+  "tests.py::test_dec",
+  "tests.py::test_plate",
+  "tests.py::test_mjd",
+  "tests.py::test_fiber",
+  "tests.py::test_method_spectrum_name"
+]
